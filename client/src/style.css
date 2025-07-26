@@ -9,8 +9,28 @@
     z-index: -1;   
 }
 
+.user-circle {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-color: black;
+    border-radius: 100px;
+    opacity: 50%;
+    margin-left: 91.8vw;
+}
+
+.user {
+    position: absolute;
+    width: 4vw;
+    height: 4vh;
+    color: white;
+    opacity: 50%;
+    margin-left: 93vw;
+    margin-top: 2vh;
+}
+
 .timer-box-container {
-    padding-top: 29vh;
+    padding-top: 28vh;
     padding-left: 34vw;
     color: white;
 }
@@ -22,16 +42,38 @@
     height: 37vh;
 }
 
+.progress-bar {
+    width: 30vw;
+    height: 4px;
+    background-color: white;
+    margin-top: 31vh;
+    margin-left: 37.5vw;
+    position: absolute;
+    border-radius: 100px;
+    opacity: 50%;
+}
+
+.progress-made {
+    background-color: #ED6AFF;
+    width: 2vw;
+    height: 4px;
+    border-radius: 100px;
+}
 .time-display {
     text-align: center;
     font-size: 7em;
     font-family: "Inter";
-    padding-top: 2vh;
+    padding-top: 4vh;
 }
 
 .task-list {
-    max-height: 25%;
+    max-height: 23%;
     overflow-y: auto;
+}
+
+/* Scrollbar de task list */
+.task-list::-webkit-scrollbar {
+    margin-right: 1vw;
 }
 
 .add-task-btn {
@@ -39,12 +81,49 @@
     height: 2.5vh;
     padding-left: 5.5vw;
     margin-left: 10vw;
-    background-color: rgba(255, 255, 255, 0.15);
-    color: rgba(255, 255, 255, 0.6);
+    margin-top: 1vh;
+    background-color: rgba(255, 255, 255, 0.15); /*Color del botón*/
+    color: rgba(255, 255, 255, 0.6);  /*Color de texto*/
     border-radius: 100px;
     font-size: 0.65em;
     font-family: "Inter";
     padding-top: 0.5vh;
+}
+
+/* TIMER BUTTONS */
+.controls { /* Controls container*/
+    position: absolute;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 15vw;
+    height: 6vh;
+    margin-left: 44vw;
+    margin-top: 2.5vh;
+    border-radius: 100px;
+}
+
+.restart-btn {
+    z-index: 100;
+    position: absolute;
+    width: 30px;
+    padding-top: 1vh;
+    padding-left: 2vw;
+}
+
+.stop-btn {
+    z-index: 100;
+    position: absolute;
+    width: 30px;
+    padding-top: 1vh;
+    padding-left: 6.5vw;
+}
+
+.config-timer-btn {
+    z-index: 100;
+    position: absolute;
+    width: 30px;
+    padding-top: 1vh;
+    padding-left: 11vw;
 }
 
 ul {
