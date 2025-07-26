@@ -19,7 +19,7 @@
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 50px;
     width: 37vw;
-    height: 34.5vh;
+    height: 37vh;
 }
 
 .time-display {
@@ -29,24 +29,43 @@
     padding-top: 2vh;
 }
 
+.task-list {
+    max-height: 25%;
+    overflow-y: auto;
+}
+
+.add-task-btn {
+    width: 10vw;
+    height: 2.5vh;
+    padding-left: 5.5vw;
+    margin-left: 10vw;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.6);
+    border-radius: 100px;
+    font-size: 0.65em;
+    font-family: "Inter";
+    padding-top: 0.5vh;
+}
+
 ul {
     font-family: "Inknut Antiqua";
     font-weight: 600;
     font-size: 0.7em;
     margin-top: 0;
-    padding-left: 7vw;
+    padding-left: 5vw;
     list-style: none;
 }
 
 ul li::before {
-    display: flex;
+    display: inline-block;
+    vertical-align: middle;
     content: "";
     width: 1.2em;
     height: 1.2em;
     border-style: solid;
     border-width: 1px;
     border-color: white;
-    border-radius: 4px;
-    padding-right: 0;
-    
+    border-radius: 4px; 
+    margin-right: 1vw; 
 }
+
