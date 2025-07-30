@@ -9,6 +9,7 @@
     z-index: -1;   
 }
 
+
 .user-circle {
     position: absolute;
     width: 80px;
@@ -28,6 +29,55 @@
     margin-left: 93vw;
     margin-top: 2vh;
 }
+
+.focus-btn { 
+    position: absolute;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 7vw;
+    height: 4vh;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    font-size: 0.9em;
+    font-family: "Inter";
+    font-weight: 700;
+    padding-top: 1.5vh;
+    padding-left: 4vw;
+    margin-top: 22vh;
+    margin-left: 37vw;
+}
+
+.short-break-btn { 
+    position: absolute;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 7vw;
+    height: 4vh;
+    font-size: 0.9em;
+    font-family: "Inter";
+    padding-top: 1.5vh;
+    padding-left: 1.8vw;
+    padding-right: 1vw;
+    margin-top: 22vh;
+    margin-left: 48.5vw;
+}
+
+.long-break-btn { 
+    position: absolute;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 8vw;
+    height: 4vh;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    font-size: 0.9em;
+    font-family: "Inter";
+    padding-top: 1.5vh;
+    padding-left: 1.8vw;
+    margin-top: 22vh;
+    margin-left: 58.7vw;
+}
+
 
 .timer-box-container {
     padding-top: 28vh;
