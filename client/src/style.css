@@ -30,54 +30,59 @@
     margin-top: 2vh;
 }
 
-.focus-btn { 
+#focus-btn { 
     position: absolute;
     color: white;
-    background-color: rgba(255, 255, 255, 0.1);
     width: 7vw;
-    height: 4vh;
+    height: 5vh;
     border-top-left-radius: 100px;
     border-bottom-left-radius: 100px;
     font-size: 0.9em;
     font-family: "Inter";
-    font-weight: 700;
-    padding-top: 1.5vh;
     padding-left: 4vw;
     margin-top: 22vh;
     margin-left: 37vw;
 }
 
-.short-break-btn { 
+#short-break-btn { 
     position: absolute;
     color: white;
-    background-color: rgba(0, 0, 0, 0.6);
     width: 7vw;
-    height: 4vh;
+    height: 5vh;
     font-size: 0.9em;
     font-family: "Inter";
-    padding-top: 1.5vh;
     padding-left: 1.8vw;
     padding-right: 1vw;
     margin-top: 22vh;
     margin-left: 48.5vw;
 }
 
-.long-break-btn { 
+#long-break-btn { 
     position: absolute;
     color: white;
-    background-color: rgba(0, 0, 0, 0.6);
     width: 8vw;
-    height: 4vh;
+    height: 5vh;
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
     font-size: 0.9em;
     font-family: "Inter";
-    padding-top: 1.5vh;
     padding-left: 1.8vw;
     margin-top: 22vh;
     margin-left: 58.7vw;
 }
 
+.active-phase {
+    all: unset;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: 700;
+}
+
+.inactive-phase {
+    all: unset;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.6);   
+}
 
 .timer-box-container {
     padding-top: 28vh;
@@ -86,6 +91,7 @@
 }
 
 .timer-box {
+    position: absolute;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 50px;
     width: 37vw;
@@ -110,15 +116,19 @@
     border-radius: 100px;
 }
 .time-display {
+    position: absolute;
     text-align: center;
     font-size: 7em;
     font-family: "Inter";
-    padding-top: 4vh;
+    margin-top: 2.5vh;
+    margin-left: 6vw;
+
 }
 
 .task-list {
     max-height: 23%;
     overflow-y: auto;
+    margin-top: 20vh;
 }
 
 /* Scrollbar de task list */
@@ -148,32 +158,53 @@
     width: 15vw;
     height: 6vh;
     margin-left: 44vw;
-    margin-top: 2.5vh;
+    margin-top: 40vh;
     border-radius: 100px;
 }
 
 .restart-btn {
-    z-index: 100;
+    all: unset;
+    cursor: pointer;
+    z-index: 9999;
     position: absolute;
     width: 30px;
+    height: 30px;
     padding-top: 1vh;
-    padding-left: 2vw;
+    margin-left: 2vw;
 }
 
-.stop-btn {
-    z-index: 100;
+.start-btn {
+    all: unset;
+    cursor: pointer;
+    z-index: 9999;
     position: absolute;
     width: 30px;
+    height: 30px;
     padding-top: 1vh;
-    padding-left: 6.5vw;
+    margin-left: 6.5vw;
+}
+
+.pause-btn {
+    all: unset;
+    cursor: pointer;
+    z-index: 9999;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    padding-top: 1vh;
+    margin-left: 6.5vw;
+    visibility: hidden;
 }
 
 .config-timer-btn {
+    all: unset;
+    cursor: pointer;
     z-index: 100;
     position: absolute;
     width: 30px;
+    height: 30px;
     padding-top: 1vh;
-    padding-left: 11vw;
+    margin-left: 11vw;
 }
 
 ul {
