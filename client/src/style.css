@@ -125,6 +125,8 @@
 
 }
 
+
+/* ---------------------------- TAREAS -----------------------------*/
 .task-list {
     max-height: 23%;
     overflow-y: auto;
@@ -136,12 +138,24 @@
     margin-right: 1vw;
 }
 
+#task-list-ul {
+    list-style: none;
+    padding-left: 6vw;
+    margin-top: 0;
+}
+
+.task-text {
+    font-family: "Inknut Antiqua";
+    font-weight: 600;
+    font-size: 0.7em;
+}
+
 .task-checkbox {
     display: inline-block;
     vertical-align: middle;
     content: "";
-    width: 1.2em;
-    height: 1.2em;
+    width: 1em;
+    height: 1em;
     border-style: solid;
     border-width: 1px;
     border-color: white;
@@ -150,13 +164,34 @@
     cursor: pointer;
 }
 
-.task-completed-checkbox {
 
+.task-completed-checkbox::after {
+    content: "✓"; /* También puedes usar ✓ o cualquier otro símbolo */
+    color: white;
+    opacity: 60%;
+    font-size: 1em;
+    display: block;
+    text-align: center;
+    line-height: 1.2em; /* Igual que el alto del span para centrarlo */
 }
 
 .task-completed-text {
-
+    color: rgba(255, 255, 255, 0.6);
+    position: relative;
+    font-style: italic;
+    font-weight: 100;
 }
+.task-completed-text::after {
+    content: "";
+    position: absolute;
+    top: 50%;  
+    left: 0%;
+    width: 100%;
+    height: 1px;  
+    background-color: white; 
+    z-index: 1; 
+}
+
 .add-task-btn {
     width: 10vw;
     height: 2.5vh;
@@ -228,12 +263,5 @@
     margin-left: 11vw;
 }
 
-ul {
-    font-family: "Inknut Antiqua";
-    font-weight: 600;
-    font-size: 0.7em;
-    margin-top: 0;
-    padding-left: 5vw;
-    list-style: none;
-}
+
 
