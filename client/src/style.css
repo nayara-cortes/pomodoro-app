@@ -136,6 +136,27 @@
     margin-right: 1vw;
 }
 
+.task-checkbox {
+    display: inline-block;
+    vertical-align: middle;
+    content: "";
+    width: 1.2em;
+    height: 1.2em;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 4px; 
+    margin-right: 1vw;
+    cursor: pointer;
+}
+
+.task-completed-checkbox {
+
+}
+
+.task-completed-text {
+
+}
 .add-task-btn {
     width: 10vw;
     height: 2.5vh;
@@ -214,18 +235,5 @@ ul {
     margin-top: 0;
     padding-left: 5vw;
     list-style: none;
-}
-
-ul li::before {
-    display: inline-block;
-    vertical-align: middle;
-    content: "";
-    width: 1.2em;
-    height: 1.2em;
-    border-style: solid;
-    border-width: 1px;
-    border-color: white;
-    border-radius: 4px; 
-    margin-right: 1vw; 
 }
 
