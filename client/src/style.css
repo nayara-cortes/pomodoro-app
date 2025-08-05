@@ -30,8 +30,18 @@
     margin-top: 2vh;
 }
 
-#focus-btn { 
+.session {
     position: absolute;
+    width: 31.5vw;
+    height: 5vh;
+    z-index: -1;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+#focus-btn { 
+    position: relative;
     color: white;
     width: 7vw;
     height: 5vh;
@@ -40,12 +50,10 @@
     font-size: 0.9em;
     font-family: "Inter";
     padding-left: 4vw;
-    margin-top: 22vh;
-    margin-left: 37vw;
 }
 
 #short-break-btn { 
-    position: absolute;
+    position: relative;
     color: white;
     width: 7vw;
     height: 5vh;
@@ -53,12 +61,10 @@
     font-family: "Inter";
     padding-left: 1.8vw;
     padding-right: 1vw;
-    margin-top: 22vh;
-    margin-left: 48.5vw;
 }
 
 #long-break-btn { 
-    position: absolute;
+    position: relative;
     color: white;
     width: 8vw;
     height: 5vh;
@@ -67,9 +73,9 @@
     font-size: 0.9em;
     font-family: "Inter";
     padding-left: 1.8vw;
-    margin-top: 22vh;
-    margin-left: 58.7vw;
 }
+
+
 
 .active-phase {
     all: unset;
@@ -85,52 +91,97 @@
 }
 
 .timer-box-container {
-    padding-top: 28vh;
-    padding-left: 34vw;
+    position: absolute;
     color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    height: 70vh; 
 }
 
 .timer-box {
-    position: absolute;
+    position: relative;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 50px;
-    width: 37vw;
-    height: 37vh;
+    width: 60%;
+    height: 55%;    
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
 }
 
 .progress-bar {
-    width: 30vw;
-    height: 4px;
+    position: relative;
+    width: 80%;
+    height: 1.5%;
     background-color: white;
-    margin-top: 31vh;
-    margin-left: 37.5vw;
-    position: absolute;
     border-radius: 100px;
     opacity: 50%;
-}
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} 
 
 .progress-made {
+    position: relative;
     background-color: #ED6AFF;
-    width: 2vw;
-    height: 4px;
+    width: 10%;
+    height: 100%;
     border-radius: 100px;
 }
-.time-display {
-    position: absolute;
-    text-align: center;
-    font-size: 7em;
-    font-family: "Inter";
-    margin-top: 2.5vh;
-    margin-left: 6vw;
 
+
+.time-display {
+    display: flex;
+    position: relative;
+    text-align: center;
+    font-size: 6rem;
+    font-family: "Inter";
+    top: 7%;
+    align-items: center; /* centra verticalmente */
+    justify-content: center; /* centra horizontalmente */
+    gap: 0.1em;
 }
+
+
+.input-time {
+    all: unset;
+    width: 2ch;
+    text-align: center;
+    font-size: 0.8em;
+    border: 1px solid white;
+    border-radius: 0.2em;
+    padding: 0.05em 0.1em;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+.colon {
+    display: inline-block;
+    font-size: inherit;
+    line-height: 1;
+    vertical-align: middle; /* <- clave */
+    padding: 0 0.2ch;        /* espacio entre inputs */
+    color: white;
+    margin-bottom: 2%;
+}
+
+
 
 
 /* ---------------------------- TAREAS -----------------------------*/
 .task-list {
+    position: relative;
     max-height: 23%;
     overflow-y: auto;
-    margin-top: 20vh;
+    top: 10%;
 }
 
 /* Scrollbar de task list */
@@ -260,16 +311,21 @@
 #add-task-btn {
     all: unset;
     cursor: pointer;
+
     width: 10vw;
     height: 4vh;
-    padding-left: 5vw;
-    margin-left: 11.5vw;
-    margin-top: 2vh;
+
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
     background-color: rgba(255, 255, 255, 0.15); /*Color del botón*/
     color: rgba(255, 255, 255, 0.6);  /*Color de texto*/
     border-radius: 100px;
     font-size: 0.8em;
     font-family: "Inter";
+    text-align: center;
 }
 
 #add-task-btn:hover {
@@ -299,14 +355,15 @@
 
 /* TIMER BUTTONS */
 .controls { /* Controls container*/
-    position: absolute;
+    position: relative;
     color: white;
     background-color: rgba(0, 0, 0, 0.6);
-    width: 15vw;
-    height: 6vh;
-    margin-left: 44vw;
-    margin-top: 40vh;
+    width: 25%;
+    height: 8.5%;
     border-radius: 100px;
+    left: 50%;
+    transform: translate(-50%);
+    margin-top: 18%;
 }
 
 .restart-btn {
@@ -354,5 +411,23 @@
     margin-left: 11vw;
 }
 
+.config-display {
+    position: fixed;
+    width: 50%;
+    height: 80%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 1000;
+    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    border-radius: 60px;
+}
+
+.config-title {
+    font-size: small;
+
+}
 
 

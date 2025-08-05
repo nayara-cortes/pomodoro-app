@@ -2,9 +2,7 @@
 
 /** GLOBAL VARIABLES */
 let taskList = [
-    {text: "Figma UI Design.", completed: false},
-    {text: "Work on the website layout (no logic).", completed: false}, 
-    {text: "Add scrollbar.", completed: false},
+    {text: "¡Escribe tu primera tarea! ☺️", completed: false},
 ];
 let isAddingTask = false;
 
@@ -57,7 +55,7 @@ function createTaskElement(task, index) {
     // Añadimos listener para poder editar la tarea al pulsar sobre ella.
     text.addEventListener("click", () => {
         let input = document.createElement("input");
-        input.maxLength = 30;
+        input.maxLength = 35;
         input.value = text.textContent;
         input.classList.add("task-text-input");
         li.replaceChild(input, text);
@@ -67,6 +65,7 @@ function createTaskElement(task, index) {
                 if(event.target.value.trim() !== "") {
                     taskList[index].text = input.value;
                     renderTasks();
+                    addTask();
                 } else {
                     li.replaceChild(text, input);
                 }
@@ -134,20 +133,21 @@ function addTask() {
         setTimeout(() => {
         document.addEventListener("click", handleOutsideClick);
         }, 0);
-        input.addEventListener("keydown", (event) => handleInputKeydown(event, callbackIfValid));
+        input.addEventListener("keydown", (event) => handleInputKeydown(event, callbackIfValid, li));
     }
 }
 
-function handleInputKeydown(event, callbackIfValid) {
+function handleInputKeydown(event, callbackIfValid, li) {
     if(event.key === "Enter") {
         if(event.target.value.trim() !== "") {
             callbackIfValid(event.target.value);
+            addTask();
         } else {
-            event.target.remove();
+            li.remove();
             isAddingTask = false;
         }
     } else if (event.key === "Escape") {
-        event.target.remove();
+        li.remove();
         isAddingTask = false;
     }
 }

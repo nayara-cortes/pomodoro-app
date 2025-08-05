@@ -3,11 +3,14 @@
 /* GLOBAL VARIABLES */
 let myTimer = null;
 let minutes, seconds;
+let f_minutes = 25, f_seconds = 0;
+let s_minutes = 5, s_seconds = 0;
+let l_minutes = 10, l_seconds = 0;
 let currentPhase = "work";
 let session = 1;
 let sessionMAX = 2;
 
-const phaseTimes = { work: [0, 5], shortBreak: [0,2], longBreak: [0,4] };
+const phaseTimes = { work: [f_minutes, f_seconds], shortBreak: [s_minutes, s_seconds], longBreak: [l_minutes, l_seconds] };
 setTimeFromPhase();
 
 /* --------------------TIMER LOGIC FUNCTIONS------------------- */
@@ -84,7 +87,22 @@ function changePhase() {
 
 // Muestra el tiempo
 function showTime() {
-    document.getElementById("time-display").innerHTML = checkTime(minutes) + ":" + checkTime(seconds);
+    let divMinutes = document.createElement("div");
+    
+    let colon = document.createElement("span");
+    let divSeconds = document.createElement("div");
+
+
+    divMinutes.textContent = checkTime(minutes);
+    colon.textContent = ":";
+    divSeconds.textContent = checkTime(seconds);
+
+    const timeDisplay = document.getElementById("time-display");
+    timeDisplay.innerHTML = ""; // Limpia el contenido anterior
+
+    document.getElementById("time-display").appendChild(divMinutes);
+    document.getElementById("time-display").appendChild(colon);
+    document.getElementById("time-display").appendChild(divSeconds);
 }
 
 // Cambia la visibilidad de los botones (pausa/inicio) del temporizador
@@ -136,6 +154,69 @@ function focusMode(id) {
     showTime();
 }
 
+
+
+function activateEditMode(unit) {
+    const block = document.querySelector(`.time-unit[data-unit="${unit}"]`);
+    const span = block.querySelector('.time-value');
+    const input = block.querySelector('.input-time');
+
+    span.classList.add("hidden");
+    input.classList.remove("hidden");
+    input.value = span.textContent;
+    input.focus();
+
+    input.onkeydown = (event) => {
+        if(event.key === "Enter") {
+            let newValue = input.value.trim();
+            // Validar que es un número entre 0 y 59 (segundos) o >= 0 (minutos)
+            if (!/^\d{1,2}$/.test(newValue)) return; // ignora si no es válido
+            if (newValue.length === 1) {
+                newValue = "0" + newValue;
+            }
+            span.textContent = newValue;
+            updatePhaseTimes(unit, newValue);
+            input.classList.add("hidden");
+            span.classList.remove("hidden");
+        } 
+    }
+    input.onblur = () => {
+        let newValue = input.value.trim();
+        if (!/^\d{1,2}$/.test(newValue)) {
+            newValue = span.textContent; // Si no es válido, restaurar el valor original
+        } else {
+            newValue = checkTime(newValue); // Formatea a 2 dígitos
+        }
+
+        span.textContent = newValue;
+        updatePhaseTimes(unit, newValue);
+        input.classList.add("hidden");
+        span.classList.remove("hidden");
+    };
+
+    
+}
+
+function updatePhaseTimes(unit, value) {
+    if (unit === "minutes") {
+        phaseTimes[currentPhase][0] = parseInt(value);
+        minutes = parseInt(value);
+    } else if (unit === "seconds") {
+        phaseTimes[currentPhase][1] = parseInt(value);
+        seconds = parseInt(value);
+    }
+}
+
+
+document.getElementById("time-display").addEventListener("click", function (e) {
+    if (e.target.classList.contains("time-value")) {
+        const parent = e.target.closest(".time-unit");
+        const unit = parent.getAttribute("data-unit");
+        activateEditMode(unit);
+    }
+});
+
+
 document.getElementById("start-btn").addEventListener("click", startTimer);
 document.getElementById("pause-btn").addEventListener("click", pauseTimer);
 document.getElementById("restart-btn").addEventListener("click", restartTimer);
@@ -145,7 +226,7 @@ document.getElementById("short-break-btn").addEventListener("click", () => focus
 document.getElementById("long-break-btn").addEventListener("click", () => focusMode("long-break-btn"));
 
 
-
+// document.getElementById("config-timer-btn").addEventListener("click", configTimer);
 
 
 /* Anotaciones para entender el temporizador
