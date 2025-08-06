@@ -55,8 +55,8 @@ function createTaskElement(task, index) {
     // Añadimos listener para poder editar la tarea al pulsar sobre ella.
     text.addEventListener("click", () => {
         let input = document.createElement("input");
-        input.maxLength = 35;
         input.value = text.textContent;
+        input.maxLength = 35;
         input.classList.add("task-text-input");
         li.replaceChild(input, text);
         input.focus();
@@ -113,7 +113,7 @@ function addTask() {
         // Creamos input
         let input = document.createElement("input");
         input.classList.add("task-text-input");
-        input.maxLength = 30;
+        input.maxLength = 35;
         document.getElementById("task-list-ul").appendChild(li);
 
         // Añadimos a li

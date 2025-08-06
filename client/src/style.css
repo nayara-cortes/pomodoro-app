@@ -34,10 +34,10 @@
     position: absolute;
     width: 31.5vw;
     height: 5vh;
-    z-index: -1;
     top: 25%;
     left: 50%;
     transform: translate(-50%);
+    z-index: 100;
 }
 
 #focus-btn { 
@@ -96,7 +96,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60vw;
+    width: clamp(5em, 60vw, 65rem);
     height: 70vh; 
 }
 
@@ -135,43 +135,18 @@
 
 
 .time-display {
-    display: flex;
+    z-index: 100;
     position: relative;
-    text-align: center;
-    font-size: 6rem;
+    display: flex;
+    align-items: center;
+    font-size: clamp(1rem, 9vw, 9em);
     font-family: "Inter";
     top: 7%;
-    align-items: center; /* centra verticalmente */
-    justify-content: center; /* centra horizontalmente */
-    gap: 0.1em;
+    justify-content: center;
 }
 
 
-.input-time {
-    all: unset;
-    width: 2ch;
-    text-align: center;
-    font-size: 0.8em;
-    border: 1px solid white;
-    border-radius: 0.2em;
-    padding: 0.05em 0.1em;
-    background-color: rgba(255, 255, 255, 0.05);
-    color: white;
-}
 
-.hidden {
-    display: none;
-}
-
-.colon {
-    display: inline-block;
-    font-size: inherit;
-    line-height: 1;
-    vertical-align: middle; /* <- clave */
-    padding: 0 0.2ch;        /* espacio entre inputs */
-    color: white;
-    margin-bottom: 2%;
-}
 
 
 
@@ -181,7 +156,8 @@
     position: relative;
     max-height: 23%;
     overflow-y: auto;
-    top: 10%;
+    top: 5%;
+    max-width: 100%;
 }
 
 /* Scrollbar de task list */
@@ -191,7 +167,6 @@
 
 #task-list-ul {
     list-style: none;
-    padding-left: 6vw;
     margin-top: 0;
     margin-right: 4vw;
 }
@@ -223,8 +198,8 @@
 
 .task-text {
     font-family: "Inknut Antiqua";
-    font-weight: 600;
-    font-size: 0.7em;
+    font-weight: 200;
+    font-size: clamp(0.2em, 0.8vw, 0.8rem);
     line-height: 1em;
 }
 
@@ -339,13 +314,15 @@
 .task-text-input {
     all: unset;
     font-family: "Inknut Antiqua";
-    font-weight: 600;
-    font-size: 0.7em;
+    font-weight: 200;
+    font-size: clamp(0.2em, 0.8vw, 0.8rem);
     color: white;
     background: transparent;
     border: none;
     border-bottom: 0.5px solid rgba(255, 255, 255, 0.5);
     line-height: 1em; /* Haz que coincida con .task-text */
+    width: 80%;
+    max-width: 80%;
 }
 .task-text-input:focus {
     border-bottom: 0.5px solid rgba(255, 255, 255, 0.5);
@@ -413,11 +390,11 @@
 
 .config-display {
     position: fixed;
-    width: 50%;
-    height: 80%;
-    background-color: rgba(255, 255, 255, 0.8);
+    width: clamp(10em, 60%, 45rem);
+    height: clamp(25em, 40%, 30rem);
+    background-color: white;
     z-index: 1000;
-    
+    font-family: "Inter";
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -426,8 +403,20 @@
 }
 
 .config-title {
-    font-size: small;
+    font-size: clamp(0.2em, 2vw, 3rem);
 
 }
+.config-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(5px); 
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 999;
+}
 
-
+.hidden {
+    display: none;
+}

@@ -8,6 +8,23 @@
   <body>
     <div class="default-background"></div>
     <main>
+      <!-- OVERLAY -->
+      <div class="config-overlay hidden" id="config-overlay"></div>
+
+      <!-- MÓDULO DE CONFIGURACIÓN -->
+      <section id="config-display" class="config-display hidden">
+        <h2 class="config-title">Settings</h2>
+        <section class="config-options">
+          <button id="timer-settings-btn">Pomodoro timer</button>
+          <button id="sounds-settings-btn">Sounds</button>
+          <button id="background-settings-btn">Background</button>
+        </section>
+        <div id="timer-settings">
+          <div id="input-minutes"></div>
+        </div>
+        <div id="sounds-settings" class="hidden"></div>
+        <div id="background-settings" class="hidden"></div>
+      </section>
       <div class="user-circle"></div>
       <section class="user">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -25,23 +42,7 @@
             <div class="progress-made"></div>
           </div>
           
-          <div id="time-display" class="time-display">
-  
-            <!-- Minutos -->
-            <div class="time-unit" data-unit="minutes">
-              <span class="time-value">10</span>
-              <input class="input-time hidden" type="text" maxlength="2" />
-            </div>
-
-            <!-- Separador -->
-            <span class="colon">:</span>
-
-            <!-- Segundos -->
-            <div class="time-unit" data-unit="seconds">
-              <span class="time-value">00</span>
-              <input class="input-time hidden" type="text" maxlength="2" />
-            </div>
-          </div>
+          <div class="time-display" id="time-display"></div>
 
           <section class="task-list">
             <ul id="task-list-ul"></ul>
