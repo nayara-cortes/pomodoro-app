@@ -14,40 +14,17 @@
       <!-- MÓDULO DE CONFIGURACIÓN -->
       <section id="config-display" class="config-display hidden">
         <h2 class="config-title">Settings</h2>
-
         <section class="config-options">
-          <button id="timer-settings-btn" class="selected">Pomodoro timer</button>
+          <button id="timer-settings-btn">Pomodoro timer</button>
           <button id="sounds-settings-btn">Sounds</button>
           <button id="background-settings-btn">Background</button>
         </section>
         <div id="timer-settings">
-          <div id="phaseTime-settings">
-            <div id="config-focus">
-              <p class="input-time-config-text">Pomodoro</p>
-              <input id="input-pomodoro" class="input-timer"></input>
-            </div>
-            <div id="config-short-break">
-              <p class="input-time-config-text">Short Break</p>
-              <input id="input-short-break" class="input-timer"></input>
-            </div>
-            <div id="config-long-break">
-              <p class="input-time-config-text">Long Break</p>
-              <input id="input-long-break" class="input-timer"></input>
-            </div>
-          </div>
-          <button id="save-timer-settings">Save</button>
-          <div id="auto-start-break">
-            <input type="checkbox" id="auto-breaks">
-            <label for="auto-breaks">Auto Start Breaks</label>
-          </div>
+          <div id="input-minutes"></div>
         </div>
-          
         <div id="sounds-settings" class="hidden"></div>
         <div id="background-settings" class="hidden"></div>
-
       </section>
-
-      <!-- USUARIO -->
       <div class="user-circle"></div>
       <section class="user">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">

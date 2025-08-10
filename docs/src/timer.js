@@ -9,8 +9,8 @@ let l_minutes = 10, l_seconds = 0;
 let currentPhase = "work";
 let session = 1;
 let sessionMAX = 2;
-let currentSettings = "timer";
-let phaseTimes = { work: [f_minutes, f_seconds], shortBreak: [s_minutes, s_seconds], longBreak: [l_minutes, l_seconds] };
+
+const phaseTimes = { work: [f_minutes, f_seconds], shortBreak: [s_minutes, s_seconds], longBreak: [l_minutes, l_seconds] };
 setTimeFromPhase();
 showTime();
 
@@ -123,8 +123,6 @@ function updatePhaseStyle() {
     }
 }
 
-
-
 function focusMode(id) {
     switch(id) {
         case "focus-btn":
@@ -158,72 +156,18 @@ function updatePhaseTimes(unit, value) {
 function configTimer() {
     document.getElementById("config-overlay").classList.remove("hidden");
     document.getElementById("config-display").classList.remove("hidden");
-    document.getElementById("timer-settings-btn").classList.add("selected");
-    document.querySelector(".config-overlay").addEventListener("click", () => {
-        document.getElementById("config-display").classList.add("hidden");
-        document.getElementById("config-overlay").classList.add("hidden");
-    })
-
-    document.addEventListener("keydown", escClose);
     
-    document.getElementById("input-pomodoro").value = checkTime(f_minutes);
-    document.getElementById("input-short-break").value = checkTime(s_minutes);
-    document.getElementById("input-long-break").value = checkTime(l_minutes);
-
 }
 
 
 function escClose(event) {
     if (event.key === "Escape") {
-        document.getElementById("config-display").classList.add("hidden");
+        document.querySelector(".config-display")?.remove();
         document.getElementById("config-overlay").classList.add("hidden");
 
         // 💡 Muy importante: quita el listener después de cerrar
         document.removeEventListener("keydown", escClose);
     }
-}
-
-function selectedSettings(button) {
-    // Seleccionamos la configuración que deseamos ver
-    document.getElementById(button).classList.add("selected"); // Ahora el botón destaca
-    document.getElementById(currentSettings + "-settings-btn").classList.remove("selected"); // Le quitamos la selección al que estaba destacado
-    document.getElementById(currentSettings + "-settings").classList.add("hidden");
-
-    switch(button) {
-        case "timer-settings-btn":
-            document.getElementById("timer-settings").classList.remove("hidden");
-            currentSettings = "timer";
-            break;
-        case "sounds-settings-btn":
-            document.getElementById("sounds-settings").classList.remove("hidden");
-            currentSettings = "sounds";
-            break;
-        case "background-settings-btn":
-            document.getElementById("background-settings").classList.remove("hidden");
-            currentSettings = "background";
-            break;
-    }
-}
-
-function changeTime() {
-    let newFocusMinutes = parseInt(document.getElementById("input-pomodoro").value);
-    let newShortBreakMinutes = parseInt(document.getElementById("input-short-break").value);
-    let newLongBreakMinutes = parseInt(document.getElementById("input-long-break").value);
-
-    if(newFocusMinutes !== f_minutes) {
-        f_minutes = newFocusMinutes;
-    }
-    if(newShortBreakMinutes !== s_minutes) {
-        s_minutes = newShortBreakMinutes;
-    }
-    
-    if(newLongBreakMinutes !== l_minutes) {
-        l_minutes = newLongBreakMinutes;
-    }
-
-    phaseTimes = { work: [f_minutes, f_seconds], shortBreak: [s_minutes, s_seconds], longBreak: [l_minutes, l_seconds] };
-    setTimeFromPhase();
-    showTime();
 }
 
 
@@ -237,13 +181,6 @@ document.getElementById("long-break-btn").addEventListener("click", () => focusM
 
 
 document.getElementById("config-timer-btn").addEventListener("click", configTimer);
-document.getElementById("timer-settings-btn").addEventListener("click", () => selectedSettings("timer-settings-btn"));
-document.getElementById("sounds-settings-btn").addEventListener("click", () => selectedSettings("sounds-settings-btn"));
-document.getElementById("background-settings-btn").addEventListener("click", () => selectedSettings("background-settings-btn"));
-
-document.getElementById("save-timer-settings").addEventListener("click", changeTime);
-
-
 
 
 /* Anotaciones para entender el temporizador

@@ -390,157 +390,33 @@
 
 .config-display {
     position: fixed;
-    display: flex;
-    width: clamp(10em, 50%, 45rem);
+    width: clamp(10em, 60%, 45rem);
     height: clamp(25em, 40%, 30rem);
-    background-color: rgba(0, 0, 0, 0.3);
-    color: white;
+    background-color: white;
     z-index: 1000;
     font-family: "Inter";
-    font-size: small;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
     border-radius: 60px;
-    display: flex;
 }
 
 .config-title {
     font-size: clamp(0.2em, 2vw, 3rem);
-    margin-left: 6%;
-    margin-top: 5%;
 
 }
 .config-overlay {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
-    backdrop-filter: blur(10px); 
+    backdrop-filter: blur(5px); 
     background-color: rgba(0, 0, 0, 0.3);
     z-index: 999;
 }
 
 .hidden {
     display: none;
-    visibility: hidden;
-}
-
-/* Menú de configuración */
-.config-options {
-    position: fixed;
-    width: clamp(10em, 20%, 12vw);
-    height: fit-content;
-    left: 3%;
-    border-right: 2px solid rgba(255, 255, 255, 0.6);
-    top: 35%;
-}
-
-/* Botones del menú de configuración  */
-.config-options button{
-    all: unset;
-    cursor: pointer;
-    display: block;
-    padding-top: 5%;
-    padding-bottom: 5%;
-    padding-left: 8%;
-    padding-right: 2%;
-    width: 100%;
-    margin-bottom: 2%;
-}
-
-.config-options button:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 80px;
-    width: 80%;
-}
-
-#timer-settings {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    top: 10%;
-    left: 10%;
-    gap: 0px;
-}
-
-#phaseTime-settings {
-    display: flex;
-    width: 80%;
-    height: 30%;
-
-    
-}
-
-#config-minutes {
-    margin-left: 5%;
-    margin-top: 5%;
-    width: 20%;
-}
-
-#config-seconds {
-    margin-left: 6%;
-    margin-top: 5%;
-    width: 20%;
-}
-
-.input-time-config-text {
-    margin-bottom: 0%;
-    font-family: "Inknut Antiqua";
-    font-size: 300;
-    margin-left: 15%;
-}
-
-.input-timer {
-    all: unset;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    width: 50%;
-    border-radius: 8px;
-    font-size: large;
-    margin-top: 0%;
-    text-align: center;
-    margin-left: 20%;
-    padding-top: 5%;
-    padding-bottom: 5%;
-}
-
-.config-options button.selected {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 80px;
-    width: 80%;
-}
-
-.config-options button.selected:hover{
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 80px;
-    width: 80%;
-}
-
-#save-timer-settings {
-    all: unset;
-    cursor: pointer;
-    width: 20%;
-    height: 10%;
-    background-color: rgba(255, 255, 255, 0.1);
-    font-family: "Inknut Antiqua";
-    font-size: 100;
-    text-align: center;
-    padding-bottom: 1%;
-    border-radius: 20px;
-    margin-left: 30%;
-}
-
-#save-timer-settings:hover {
-    border: 0.5px solid white;
-}
-
-#auto-start-break {
-    top: 45%;
-    margin-left: 5%;
-    font-family: "Inknut Antiqua";
-}
-
-#auto-breaks {
-    position: relative;
-
 }
