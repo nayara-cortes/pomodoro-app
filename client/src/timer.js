@@ -8,9 +8,10 @@ let s_minutes = 5, s_seconds = 0;
 let l_minutes = 10, l_seconds = 0;
 let currentPhase = "work";
 let session = 1;
-let sessionMAX = 2;
+let longBreakInterval = 2;
 let currentSettings = "timer";
 let phaseTimes = { work: [f_minutes, f_seconds], shortBreak: [s_minutes, s_seconds], longBreak: [l_minutes, l_seconds] };
+let autoStartBreaks = false, autoStartPomodoro = false;
 setTimeFromPhase();
 showTime();
 
@@ -65,7 +66,7 @@ function restartTimer() {
 
 function changePhase() {
     if(currentPhase === "work") {
-        if(session < sessionMAX) {
+        if(session < longBreakInterval) {
             session++;
             currentPhase = "shortBreak";
         } else {
@@ -84,6 +85,7 @@ function changePhase() {
     setTimeFromPhase();
     updatePhaseStyle();
     showTime();
+    checkAutoStart();
 }
 
 // Muestra el tiempo
@@ -93,8 +95,8 @@ function showTime() {
 
 // Cambia la visibilidad de los botones (pausa/inicio) del temporizador
 function toggleVisibility(idToShow, idToHide) {
-    document.getElementById(idToShow).style.visibility="visible";
-    document.getElementById(idToHide).style.visibility="hidden";
+    document.getElementById(idToShow).style.display="inline";
+    document.getElementById(idToHide).style.display="none";
 }
 
 // Establece el tiempo del temporizador según la fase en la que estemos 
@@ -156,6 +158,7 @@ function updatePhaseTimes(unit, value) {
 }
 
 function configTimer() {
+    // Mostramos el módulo de configuración
     document.getElementById("config-overlay").classList.remove("hidden");
     document.getElementById("config-display").classList.remove("hidden");
     document.getElementById("timer-settings-btn").classList.add("selected");
@@ -163,13 +166,39 @@ function configTimer() {
         document.getElementById("config-display").classList.add("hidden");
         document.getElementById("config-overlay").classList.add("hidden");
     })
-
+    
+    // Salimos del modo de configuración si pulsamos 'ESC'
     document.addEventListener("keydown", escClose);
     
+    // Damos los valores a los inputs del timer
     document.getElementById("input-pomodoro").value = checkTime(f_minutes);
     document.getElementById("input-short-break").value = checkTime(s_minutes);
     document.getElementById("input-long-break").value = checkTime(l_minutes);
+    
+    // Manejamos la lógica de los switches de: "Auto Start Breaks" y "Auto Start Pomodoro"
+    const switchBreaks = document.getElementById("auto-breaks");
+    switchBreaks.checked = autoStartBreaks;
+    switchBreaks.addEventListener("change", () => {
+        autoStartBreaks = switchBreaks.checked;
+    });
 
+    const switchPomodoro = document.getElementById("auto-pomodoro");
+    switchPomodoro.checked = autoStartPomodoro;
+    switchPomodoro.addEventListener("change", () => {
+        autoStartPomodoro = switchPomodoro.checked;
+    })
+
+    // Manejamos la lógica del input "Long Break Interval"
+    const longIntervalInput = document.getElementById("long-interval");
+    longIntervalInput.value = longBreakInterval;
+    longIntervalInput.addEventListener("keydown", (event) => {
+        if(event.key === "Enter") {
+            const newLongBreakInterval = parseInt(longIntervalInput.value);
+            if(newLongBreakInterval > 0) {
+                longBreakInterval = newLongBreakInterval;
+            }
+        }
+    });
 }
 
 
@@ -210,14 +239,14 @@ function changeTime() {
     let newShortBreakMinutes = parseInt(document.getElementById("input-short-break").value);
     let newLongBreakMinutes = parseInt(document.getElementById("input-long-break").value);
 
-    if(newFocusMinutes !== f_minutes) {
+    if(newFocusMinutes !== f_minutes && newFocusMinutes > 0) {
         f_minutes = newFocusMinutes;
     }
-    if(newShortBreakMinutes !== s_minutes) {
+    if(newShortBreakMinutes !== s_minutes && newShortBreakMinutes > 0) {
         s_minutes = newShortBreakMinutes;
     }
     
-    if(newLongBreakMinutes !== l_minutes) {
+    if(newLongBreakMinutes !== l_minutes && newLongBreakMinutes > 0) {
         l_minutes = newLongBreakMinutes;
     }
 
@@ -226,6 +255,18 @@ function changeTime() {
     showTime();
 }
 
+
+function checkAutoStart() {
+    // Si estamos en fase Pomodoro
+    if(currentPhase === "focus") {
+        if(session > 1 && autoStartPomodoro === true) {
+            startTimer();
+        }
+    }
+    else if(autoStartBreaks === true) {
+        startTimer();
+    }
+}
 
 document.getElementById("start-btn").addEventListener("click", startTimer);
 document.getElementById("pause-btn").addEventListener("click", pauseTimer);

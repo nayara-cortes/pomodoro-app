@@ -1,3 +1,15 @@
+body {
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+}
+
 .default-background {
     background-image: url("/assets/default-background.avif");
     position: fixed;
@@ -11,7 +23,7 @@
 
 
 .user-circle {
-    position: absolute;
+    /* position: absolute; */
     width: 80px;
     height: 80px;
     background-color: black;
@@ -21,7 +33,7 @@
 }
 
 .user {
-    position: absolute;
+    /* position: absolute; */
     width: 4vw;
     height: 4vh;
     color: white;
@@ -30,49 +42,49 @@
     margin-top: 2vh;
 }
 
+
 .session {
-    position: absolute;
-    width: 31.5vw;
-    height: 5vh;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%);
-    z-index: 100;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 30%;
+    max-width: 500px;
+    font-size: 1em;
+    font-family: "Inter";
+    color: white;
+    margin-bottom: 0.5rem;
 }
 
 #focus-btn { 
-    position: relative;
-    color: white;
-    width: 7vw;
-    height: 5vh;
+    flex: 1;
     border-top-left-radius: 100px;
     border-bottom-left-radius: 100px;
-    font-size: 0.9em;
-    font-family: "Inter";
-    padding-left: 4vw;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
+
 #short-break-btn { 
-    position: relative;
-    color: white;
-    width: 7vw;
-    height: 5vh;
-    font-size: 0.9em;
-    font-family: "Inter";
-    padding-left: 1.8vw;
-    padding-right: 1vw;
+    flex: 1;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    width: 20%;
 }
 
 #long-break-btn { 
-    position: relative;
-    color: white;
-    width: 8vw;
-    height: 5vh;
+    flex: 1;
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
-    font-size: 0.9em;
-    font-family: "Inter";
-    padding-left: 1.8vw;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    width: 20%;
 }
 
 
@@ -90,43 +102,30 @@
     background-color: rgba(0, 0, 0, 0.6);   
 }
 
-.timer-box-container {
-    position: absolute;
-    color: white;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: clamp(5em, 60vw, 65rem);
-    height: 70vh; 
-}
+
 
 .timer-box {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 50px;
-    width: 60%;
-    height: 55%;    
-
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
+    width: 38%;
+    max-width: 600px;
+    min-width: 300px;
+    aspect-ratio: 5 / 3;
 }
 
 .progress-bar {
-    position: relative;
     width: 80%;
     height: 1.5%;
     background-color: white;
     border-radius: 100px;
     opacity: 50%;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 } 
 
 .progress-made {
-    position: relative;
     background-color: #ED6AFF;
     width: 10%;
     height: 100%;
@@ -135,13 +134,12 @@
 
 
 .time-display {
-    z-index: 100;
-    position: relative;
     display: flex;
+    flex-direction: row;
     align-items: center;
-    font-size: clamp(1rem, 9vw, 9em);
+    font-size: clamp(1rem, 8rem, 9em);
     font-family: "Inter";
-    top: 7%;
+    margin-top: 2%;
     justify-content: center;
 }
 
@@ -153,17 +151,33 @@
 
 /* ---------------------------- TAREAS -----------------------------*/
 .task-list {
-    position: relative;
-    max-height: 23%;
-    overflow-y: auto;
-    top: 5%;
-    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 15vh;
+    overflow-y: auto;   
 }
 
 /* Scrollbar de task list */
 .task-list::-webkit-scrollbar {
-    margin-right: 1vw;
+    width: 6px; /* grosor */
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
 }
+
+.task-list::-webkit-scrollbar-track {
+    background: transparent; /* fondo */
+}
+
+.task-list::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3); /* color barra */
+    border-radius: 10px;
+}
+
+.task-list::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
 
 #task-list-ul {
     list-style: none;
@@ -174,6 +188,7 @@
 #task-list-ul li {
     overflow: visible;
     display: flex;
+    flex-direction: row;
     align-items: center;
     margin-bottom: 0.2vh;
 }
@@ -199,23 +214,23 @@
 .task-text {
     font-family: "Inknut Antiqua";
     font-weight: 200;
-    font-size: clamp(0.2em, 0.8vw, 0.8rem);
+    font-size: clamp(0.5em, 0.8em, 1em);
     line-height: 1em;
 }
 
 .task-checkbox {
-    display: inline-block;
+    flex: 0 0 auto;
     vertical-align: middle;
     content: "";
-    width: 1em;
-    height: 1em;
+    width: 1rem;
+    aspect-ratio: 1 / 1;
     border-style: solid;
     border-width: 1px;
     border-color: white;
     border-radius: 4px; 
     margin-right: 1vw;
-    margin-left: 1vw;
     cursor: pointer;
+    align-items: flex-start;
 }
 
 .task-options-btn {
@@ -232,7 +247,7 @@
 }
 
 .task-options-menu {
-    position: absolute; /* Cambiamos a absolute para posicionarlo respecto al li */
+    /* position: absolute;  */
     left: 87%;
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 20px;
@@ -267,13 +282,13 @@
 
 .task-completed-text {
     color: rgba(255, 255, 255, 0.6);
-    position: relative;
+    /* position: relative; */
     font-style: italic;
     font-weight: 100;
 }
 .task-completed-text::after {
     content: "";
-    position: absolute;
+    /* position: absolute; */
     top: 50%;  
     left: 0%;
     width: 100%;
@@ -287,13 +302,9 @@
     all: unset;
     cursor: pointer;
 
-    width: 10vw;
-    height: 4vh;
+    width: 25%;
+    aspect-ratio: 4 / 1;
 
-    position: absolute;
-    top: 90%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 
     background-color: rgba(255, 255, 255, 0.15); /*Color del botón*/
     color: rgba(255, 255, 255, 0.6);  /*Color de texto*/
@@ -301,6 +312,8 @@
     font-size: 0.8em;
     font-family: "Inter";
     text-align: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 #add-task-btn:hover {
@@ -315,7 +328,7 @@
     all: unset;
     font-family: "Inknut Antiqua";
     font-weight: 200;
-    font-size: clamp(0.2em, 0.8vw, 0.8rem);
+    font-size: clamp(0.5em, 0.8em, 1em);
     color: white;
     background: transparent;
     border: none;
@@ -332,65 +345,61 @@
 
 /* TIMER BUTTONS */
 .controls { /* Controls container*/
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     color: white;
     background-color: rgba(0, 0, 0, 0.6);
-    width: 25%;
-    height: 8.5%;
+    width: 15%;
+    max-width: 200px;
+    aspect-ratio: 4 / 1;
     border-radius: 100px;
-    left: 50%;
-    transform: translate(-50%);
-    margin-top: 18%;
+    margin-top: 1rem;
+    gap: 2rem;
 }
 
-.restart-btn {
-    all: unset;
+.restart-btn,
+.start-btn,
+.pause-btn,
+.config-timer-btn {
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    font: inherit; /* mantiene tipografía del contenedor */
+    color: inherit; /* mantiene color del contenedor */
     cursor: pointer;
-    z-index: 9999;
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    padding-top: 1vh;
-    margin-left: 2vw;
+}
+    
+
+.restart-btn {
+    flex: 1;
+    width: 5%;
+    padding-left: 1rem;
 }
 
 .start-btn {
-    all: unset;
-    cursor: pointer;
-    z-index: 9999;
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    padding-top: 1vh;
-    margin-left: 6.5vw;
+    flex: 1;
 }
 
 .pause-btn {
-    all: unset;
-    cursor: pointer;
-    z-index: 9999;
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    padding-top: 1vh;
-    margin-left: 6.5vw;
-    visibility: hidden;
+    flex: 1;
+    display: none;
 }
 
 .config-timer-btn {
-    all: unset;
-    cursor: pointer;
-    z-index: 100;
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    padding-top: 1vh;
-    margin-left: 11vw;
+    flex: 1;
+    padding-right: 1rem;
 }
 
 .config-display {
     position: fixed;
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     width: clamp(10em, 50%, 45rem);
     height: clamp(25em, 40%, 30rem);
     background-color: rgba(0, 0, 0, 0.3);
@@ -398,18 +407,20 @@
     z-index: 1000;
     font-family: "Inter";
     font-size: small;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 
     border-radius: 60px;
-    display: flex;
 }
 
+#short-text-short-break {
+    display: none;
+}
+
+#short-text-long-break {
+    display: none;
+}
 .config-title {
-    font-size: clamp(0.2em, 2vw, 3rem);
-    margin-left: 6%;
-    margin-top: 5%;
+    position: fixed;
+    font-size: clamp(0.2em, 2em, 3rem);
 
 }
 .config-overlay {
@@ -428,12 +439,10 @@
 
 /* Menú de configuración */
 .config-options {
-    position: fixed;
-    width: clamp(10em, 20%, 12vw);
+    width: 35%;
     height: fit-content;
-    left: 3%;
     border-right: 2px solid rgba(255, 255, 255, 0.6);
-    top: 35%;
+    margin-left: 2em;
 }
 
 /* Botones del menú de configuración  */
@@ -459,7 +468,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    top: 10%;
     left: 10%;
     gap: 0px;
 }
@@ -488,7 +496,7 @@
     margin-bottom: 0%;
     font-family: "Inknut Antiqua";
     font-size: 300;
-    margin-left: 15%;
+    margin-left: 10%;
 }
 
 .input-timer {
@@ -502,6 +510,7 @@
     margin-left: 20%;
     padding-top: 5%;
     padding-bottom: 5%;
+    
 }
 
 .config-options button.selected {
@@ -525,22 +534,209 @@
     font-family: "Inknut Antiqua";
     font-size: 100;
     text-align: center;
-    padding-bottom: 1%;
     border-radius: 20px;
     margin-left: 30%;
+    margin-bottom: 5%;
+    margin-top: 2%;
 }
 
 #save-timer-settings:hover {
-    border: 0.5px solid white;
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
-#auto-start-break {
+.config-timer-option {
     top: 45%;
     margin-left: 5%;
     font-family: "Inknut Antiqua";
 }
 
+.long-interval-input {
+    all: unset;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    width: 2.5em;
+    height: 2em;
+    border-radius: 8px;
+    font-size: 150;
+    text-align: center;
+    font-family:"Inter";
+}
+
 #auto-breaks {
     position: relative;
+    margin-top: 5%;
+}
 
+.switch-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+    font-family: "Inknut Antiqua";
+}
+
+.switch-container input[type="checkbox"] {
+    /* position: absolute; */
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin-right: 0;
+}
+
+.switch-track {
+    width: 45px;
+    height: 24px;
+    background-color: #ccc;
+    border-radius: 999px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.switch-track::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.2s;
+}
+
+/* Estado ON */
+input[type="checkbox"]:checked + .switch-track {
+    background-color: #4caf50;
+}
+
+input[type="checkbox"]:checked + .switch-track::after {
+    transform: translateX(20px);
+}
+
+
+.to-come-settings {
+    position: absolute;
+    font-family: "Inknut Antiqua";
+    font-size: large;
+}
+
+/* Para móviles */
+@media (max-width: 500px) {
+    .session {
+        width: 80%;
+        gap: 0.2rem;
+        font-size: 0.7rem;
+    }
+
+    
+    .controls {
+        width: 100%;
+        aspect-ratio: 5 / 1;
+    }
+
+    .time-display {
+        font-size: 5em;
+    }
+    
+    .task-text {
+        font-size: 0.5em;
+    }
+
+    .task-text-input {
+        font-size: 0.5em;
+    }
+
+    #add-task-btn {
+        width: 40%;
+    }
+
+    .config-display {
+        width: 100%;
+        height: 60%;
+    }
+
+    .config-options {
+        margin-left: 1em;
+        font-size: x-small;
+        padding-right: 1em;
+    }
+
+    #short-text-short-break {
+        display: inline;
+    }
+
+    #short-text-long-break {
+        display: inline;
+    }
+
+    #long-text-short-break {
+        display: none;
+    }
+
+    #long-text-long-break {
+        display: none;
+    }
+
+}
+
+@media (min-width: 501px) and (max-width: 767px) {
+    .session {
+        width: 60%;
+    }
+
+    .timer-box {
+        width: 80%;
+    }
+
+    .controls {
+        width: 40%;
+        aspect-ratio: 5 / 1;
+    }
+
+    .time-display {
+        font-size: 7em;
+    }
+
+    .task-text {
+        font-size: clamp(0.2em, 0.6em, 0.6em);
+    }
+
+    #add-task-btn {
+        margin-top: 2rem;
+    }
+
+    .task-text-input {
+        font-size: clamp(0.2em, 0.6em, 0.6em);
+    }
+
+    .config-display {
+        width: 100%;
+        height: 60%;
+    }
+
+    
+}
+
+
+/* Para tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .session {
+        width: 50%;
+        gap: 0.3rem;
+    }
+
+    .timer-box {
+        width: 70%;
+    }
+
+
+    .controls {
+        width: 30%;
+        aspect-ratio: 5 / 1;
+    }
+
+    .config-display {
+        width: 80%;
+        height: 60%;
+    }
 }
